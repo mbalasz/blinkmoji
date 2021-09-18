@@ -60,33 +60,23 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <body>
     <script src="bundle.js" defer></script>
-    <div id="boardControlContainer">
-      <table>
-        <tr>
-          <th>Gamma:</th>
-          <td>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value="70"
-              class="slider"
-              id="gammaSlider"
-            />
-          </td>
-          <td id="gammaDisplay"></td>
-        </tr>
-      </table>
-    </div>
+    <div id="boardControlContainer"></div>
     <div class="pixelArtContainer" id="pixelArtContainer"></div>
     <div>
       <ul id="messages"></ul>
     </div>
     <div class="center-screen">
-      <button id="emoji-trigger" class=" button">😎</button>
-      <button id="butConnect" type="button" class="button">
-        Connect
-      </button>
+      <button id="emoji-trigger" class="button">😎</button>
+      <button id="butConnect" type="button" class="button">Connect</button>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="70"
+        class="slider"
+        id="gammaSlider"
+      />
+      <div id="gammaDisplay" style="display: none"></div>
     </div>
     <!-- <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>

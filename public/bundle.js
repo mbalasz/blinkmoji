@@ -140,6 +140,7 @@ module.exports.showGif = function (fileSrc) {
       }
 
       img.className = "pixelArt";
+      currentImage = img;
       if (port) sendGifAnimation(img);
     }
   };

@@ -110,6 +110,7 @@ module.exports.showGif = function(fileSrc) {
         return;
       }
       img.className = "pixelArt";
+      currentImage = img;
       if (port) sendGifAnimation(img);
     }
   };
