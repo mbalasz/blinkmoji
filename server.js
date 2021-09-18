@@ -27,10 +27,24 @@ io.on("connection", (socket) => {
     console.log("user disconnected");
   });
   socket.on("chat message", (msg) => {
-    socket.emit('chat message', msg);
-    printChar(msg, 0);
+    console.log("Received message: " + msg);
+    socket.emit("chat message", msg);
+    printEmoji(String.fromCodePoint(msg.codePointAt(0)));
   });
 });
+
+function printEmoji(emojiChar) {
+  const cat = exec(
+    `convert -extent ${extent} -pointsize ${pointsize} -gravity ${gravity} -background ${imageBackground} -fill "#fff"  pango:"${emojiChar}" public/${gifName}`,
+    async (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      io.emit("show gif", `${gifName}`);
+    }
+  );
+}
 
 function printChar(msg, currIdx) {
   if (currIdx >= msg.length) {
@@ -38,22 +52,29 @@ function printChar(msg, currIdx) {
   }
   const currentChar = String.fromCodePoint(msg.codePointAt(currIdx));
   const regexEmoji = /\p{Emoji_Presentation}/u;
-  console.log("Is " + currentChar + " an emoji: " +regexEmoji.test(currentChar) + " length: " + currentChar.length);
-  if (currentChar != ' ') {
-  const cat = exec(
-    `convert -extent ${extent} -pointsize ${pointsize} -gravity ${gravity} -background ${imageBackground} -fill "#fff"  pango:"${currentChar}" public/${gifName}`,
-   async  (err, stdout, stderr) =>  {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      io.emit('show gif', `${gifName}`);
-      shortSleep();
-      printChar(msg, currIdx + currentChar.length);
-    }
+  console.log(
+    "Is " +
+      currentChar +
+      " an emoji: " +
+      regexEmoji.test(currentChar) +
+      " length: " +
+      currentChar.length
   );
+  if (currentChar != " ") {
+    const cat = exec(
+      `convert -extent ${extent} -pointsize ${pointsize} -gravity ${gravity} -background ${imageBackground} -fill "#fff"  pango:"${currentChar}" public/${gifName}`,
+      async (err, stdout, stderr) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        io.emit("show gif", `${gifName}`);
+        shortSleep();
+        printChar(msg, currIdx + currentChar.length);
+      }
+    );
   } else {
-      printChar(msg, currIdx + 1);
+    printChar(msg, currIdx + 1);
   }
 }
 
