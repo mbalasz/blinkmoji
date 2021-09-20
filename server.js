@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
 
 function printEmoji(emojiChar) {
   const cat = exec(
-    `convert -extent ${extent} -pointsize ${pointsize} -gravity ${gravity} -background ${imageBackground} -fill "#fff"  pango:"${emojiChar}" public/${gifName}`,
+    `convert -extent ${extent} -pointsize ${pointsize} -gravity ${gravity} -background ${imageBackground} -fill "#fff"  pango:"<span font=\"Noto Color Emoji\">${emojiChar}<span>" public/${gifName}`,
     async (err, stdout, stderr) => {
       if (err) {
         console.log(err);
