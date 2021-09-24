@@ -83,14 +83,8 @@ Dropzone.options.gifDropzone = {
 
 document.addEventListener("DOMContentLoaded", () => {
   butConnect.addEventListener('click', clickConnect);
-  // butSend.addEventListener('click', clickSend);
-
-  // const notSupported = document.getElementById('notSupported');
-  // notSupported.classList.toggle('hidden', 'serial' in navigator);
-  // document.querySelectorAll('img.pixelArt').forEach(initPixelArtImage);
+  butClear.addEventListener('click', clear);
   initGamma(DEFAULT_GAMMA);
-  // debugButton.onclick = function() { if (port) writeToStream('DBG'); };
-  // clockButton.onclick = function() { drawClockMinute([0xff, 0xff, 0xff], [0x00, 0x00, 0x00], [0x00, 0x00, 0xff]); };
 });
 
 module.exports.showGif = function(fileSrc) {
@@ -115,6 +109,10 @@ module.exports.showGif = function(fileSrc) {
     }
   };
   oReq.send(null);
+}
+
+function clear() {
+  writeToStream("RST");
 }
 
 /**
