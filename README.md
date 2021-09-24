@@ -1,5 +1,15 @@
 # Blinkmoji
 
+Interact with each other through emojis displayed on the blinkenlight.
+
+It's an emoji "chat" web app where you can send any emoji to whoever is in the chat room (currently only one chat room per local network supported) - it'll display that emoji on their blinkenlight device.
+
+**What is Blinkenlight?**
+
+Check out fheinz@'s https://github.com/fheinz/Blinkenlights project. Blinkenlight is a LED display for pixel art animations.
+
+This repo forks that project (specifically the `blinken.js` file).
+
 ## Requirements
 The machine on which the web server is running has two main requirements to work properly:
 
