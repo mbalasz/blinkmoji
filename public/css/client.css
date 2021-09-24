@@ -15,15 +15,23 @@ body {
   justify-content: center;
 }
 
-#butConnect {
+#butConnect, #butClear {
   color: white;
   width: 16rem;
-  height: 5rem;
   font-size: 2rem;
   font-family: Dejavu Sans;
   display: block;
   margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
+}
+
+#butConnect {
+  height: 5rem;
+}
+
+#butClear {
+  height: 4rem;
 }
 
 #emoji-trigger {
@@ -46,7 +54,7 @@ body {
   margin-top: 15px;
 }
 
-
+/* Slider styles below */
 input[type=range] {
   -webkit-appearance: none;
   margin: 18px 0;

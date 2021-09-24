@@ -46,6 +46,7 @@ function printEmoji(emojiChar) {
   );
 }
 
+// Prints a message character by character in short time intervals.
 function printChar(msg, currIdx) {
   if (currIdx >= msg.length) {
     return;

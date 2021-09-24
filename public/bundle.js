@@ -112,13 +112,9 @@ _dropzone.Dropzone.options.gifDropzone = {
   }
 };
 document.addEventListener("DOMContentLoaded", function () {
-  butConnect.addEventListener('click', clickConnect); // butSend.addEventListener('click', clickSend);
-  // const notSupported = document.getElementById('notSupported');
-  // notSupported.classList.toggle('hidden', 'serial' in navigator);
-  // document.querySelectorAll('img.pixelArt').forEach(initPixelArtImage);
-
-  initGamma(DEFAULT_GAMMA); // debugButton.onclick = function() { if (port) writeToStream('DBG'); };
-  // clockButton.onclick = function() { drawClockMinute([0xff, 0xff, 0xff], [0x00, 0x00, 0x00], [0x00, 0x00, 0xff]); };
+  butConnect.addEventListener('click', clickConnect);
+  butClear.addEventListener('click', clear);
+  initGamma(DEFAULT_GAMMA);
 });
 
 module.exports.showGif = function (fileSrc) {
@@ -147,6 +143,10 @@ module.exports.showGif = function (fileSrc) {
 
   oReq.send(null);
 };
+
+function clear() {
+  writeToStream("RST");
+}
 /**
  * @name paddedHex
  * Return the hex string representation of `number`, padded to `width` places.
@@ -829,23 +829,7 @@ var _emojiButton = require("@joeattardi/emoji-button");
 var _require = require("./blinken"),
     showGif = _require.showGif;
 
-var socket = io(); // let messages = document.getElementById("messages");
-// var form = document.getElementById("form");
-// var input = document.getElementById("input");
-// form.addEventListener("submit", function (e) {
-//   e.preventDefault();
-//   if (input.value) {
-//     socket.emit("chat message", input.value);
-//     input.value = "";
-//   }
-// });
-// socket.on("chat message", (msg) => {
-//   let item = document.createElement("li");
-//   item.textContent = msg;
-//   messages.appendChild(item);
-//   window.scrollTo(0, document.body.scrollHeight);
-// });
-
+var socket = io();
 socket.on("show gif", function (gifSrc) {
   showGif(gifSrc);
 });
