@@ -21,7 +21,19 @@ Make sure you install (https://imagemagick.org/index.php) on the host machine.
 
 ### Emoji font
 
-Your host machine needs to have emoji fonts installed. I found that `Noto Color Emoji` and `Noto Emoji` work pretty well.
+Your host machine needs to have the `Noto Color Emoji` emoji fonts installed.
+On Arch Linux (it works for me) I used:
+
+```
+sudo pacman -S noto-fonts-emoji
+```
+
+On ubuntu this should work:
+
+```
+sudo apt update
+sudo apt install fonts-noto-color-emoji
+```
 
 ## Usage
 
